@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Pokédex</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+      <label class="switch">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider">
+          <span class="icon sun">☀️</span>
+          <span class="icon moon">🌙</span>
+        </span>
+      </label>
+    </div>
+
+    <h1>Mini Pokédex</h1>
+
+    <!-- Search Form -->
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Enter Pokémon name or number..." />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Search Result -->
+    <div id="pokemon-container"></div>
+
+    <!-- Pagination -->
+    <div id="pagination">
+      <button id="prev-btn" disabled>Previous</button>
+      <button id="next-btn">Next</button>
+    </div>
+
+    <!-- Pokémon List -->
+    <div id="pokemon-list-container"></div>
+  </div>
+
+  <!-- Stats Modal -->
+  <div id="pokemon-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- JS Script (at the end!) -->
+  <script src="script.js"></script>
+</body>
+</html>

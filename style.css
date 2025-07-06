@@ -1,0 +1,340 @@
+:root {
+  --red: #f00000;
+
+  /* Dark Theme */
+  --bg-dark: #0d0d0d;
+  --text-dark: #ffffff;
+  --card-dark: #1a1a1a;
+
+  /* Light Theme */
+  --bg-light: #f0f0f0;
+  --text-light: #111111;
+  --card-light: #ffffff;
+}
+
+/* Default (dark) */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Light theme */
+body.light {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+body.light .pokemon-card,
+body.light .pokemon-list-card {
+  background-color: var(--card-light);
+  color: var(--text-light);
+  border-color: var(--red);
+}
+
+body.dark .pokemon-card,
+body.dark .pokemon-list-card {
+  background-color: var(--card-dark);
+  color: var(--text-dark);
+}
+
+/* Toggle switch */
+.theme-toggle {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+/* Switch Container */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 32px;
+}
+
+/* Hide checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider background */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #333;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  box-sizing: border-box;
+}
+
+/* Icons inside the slider */
+.slider .icon {
+  font-size: 16px;
+  z-index: 1;
+  color: #f0f0f0;
+}
+
+/* Movable circle */
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+/* When checkbox is checked */
+input:checked + .slider {
+  background-color: #FFEA00;
+}
+
+input:checked + .slider:before {
+  transform: translateX(28px);
+}
+
+:root {
+  --red: #f00000;
+  --dark: #111;
+  --light: #0d0d0d;
+  --white: #fff;
+
+  --glow: 0 0 10px #f00000, 0 0 20px #f00000, 0 0 40px #f00000;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--light);
+  color: var(--white);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+h1 {
+  color: var(--white);
+  text-shadow: var(--glow);
+  text-align: center;
+}
+
+#search-form {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#search-input {
+  padding: 10px;
+  width: 60%;
+  font-size: 16px;
+  background-color: #222;
+  color: var(--white);
+  border: 2px solid var(--red);
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: var(--glow);
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #c70000;
+}
+
+#pokemon-container,
+#pokemon-list-container {
+  margin-top: 20px;
+}
+
+.pokemon-card,
+.pokemon-list-card {
+  width: 100%;
+  max-width: 160px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid var(--red);
+  background-color: var(--card-dark);
+  color: var(--text-dark);
+  transition: transform 0.2s ease;
+}
+
+.pokemon-list-card:hover {
+  transform: scale(1.05);
+}
+
+body.light .pokemon-list-card {
+  background-color: var(--card-light);
+  color: var(--text-light);
+}
+
+.pokemon-card img,
+.pokemon-list-card img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+#pokemon-list-container {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(140px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  justify-content: start; /* Align grid from left */
+  align-items: start;     /* Align content to top of grid cells */
+}
+
+@media (max-width: 992px) {
+  #pokemon-list-container {
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  #pokemon-list-container {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+}
+
+#pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card-flip {
+  perspective: 1000px;
+  width: 100%;
+  height: 200px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.card-flip:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-color: #1a1a1a;
+  border: 2px solid var(--red);
+  border-radius: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-back p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.card-back ul {
+  padding-left: 16px;
+  text-align: left;
+  font-size: 13px;
+}
+
+body.dark .card-front,
+body.dark .card-back {
+  background-color: var(--card-dark);
+  color: var(--text-dark);
+}
+
+body.light .card-front,
+body.light .card-back {
+  background-color: var(--card-light);
+  color: var(--text-light);
+}
+
+/* Modal base */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background-color: var(--card-dark);
+  margin: 8% auto;
+  padding: 20px;
+  border: 2px solid var(--red);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  color: var(--text-dark);
+  position: relative;
+}
+
+body.light .modal-content {
+  background-color: var(--card-light);
+  color: var(--text-light);
+}
+
+.close-btn {
+  color: var(--red);
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
