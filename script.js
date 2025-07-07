@@ -37,6 +37,54 @@ const typeColors = {
 // Elements
 const form = document.getElementById("search-form");
 const input = document.getElementById("search-input");
+const suggestionsList = document.getElementById("suggestions");
+let allPokemonNames = [];
+
+// Fetch all Pokémon names once on load
+fetch("https://pokeapi.co/api/v2/pokemon?limit=1300")
+  .then((res) => res.json())
+  .then((data) => {
+    allPokemonNames = data.results.map((p) => p.name);
+  });
+
+// Show suggestions while typing
+input.addEventListener("input", () => {
+  const query = input.value.toLowerCase().trim();
+  suggestionsList.innerHTML = "";
+
+  if (!query) {
+    suggestionsList.style.display = "none";
+    return;
+  }
+
+  const matched = allPokemonNames.filter((name) => name.startsWith(query)).slice(0, 10);
+
+  if (matched.length === 0) {
+    suggestionsList.style.display = "none";
+    return;
+  }
+
+  matched.forEach((name) => {
+    const li = document.createElement("li");
+    li.textContent = capitalize(name);
+    li.onclick = () => {
+      input.value = name;
+      suggestionsList.style.display = "none";
+      form.dispatchEvent(new Event("submit"));
+    };
+    suggestionsList.appendChild(li);
+  });
+
+  suggestionsList.style.display = "block";
+});
+
+// Hide suggestions when clicking outside
+document.addEventListener("click", (e) => {
+  if (!suggestionsList.contains(e.target) && e.target !== input) {
+    suggestionsList.style.display = "none";
+  }
+});
+
 const container = document.getElementById("pokemon-container");
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");

@@ -149,6 +149,32 @@ h1 {
   border-radius: 10px;
 }
 
+.suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0;
+  border: 1px solid #ccc;
+  background: white;
+  color: black;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  display: none;
+}
+
+.suggestions-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
+
 button {
   padding: 10px 15px;
   font-size: 16px;
