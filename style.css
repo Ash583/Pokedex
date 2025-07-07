@@ -12,10 +12,12 @@
   --card-light: #ffffff;
 }
 
-/* Default (dark) */
 body {
   background-color: var(--bg-dark);
   color: var(--text-dark);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 20px;
 }
 
 /* Light theme */
@@ -37,13 +39,13 @@ body.dark .pokemon-list-card {
   color: var(--text-dark);
 }
 
-/* Toggle switch */
+/* Toggle switch - UNCHANGED */
 .theme-toggle {
   text-align: right;
   margin-bottom: 10px;
 }
 
-/* Switch Container */
+/* Switch Container - UNCHANGED */
 .switch {
   position: relative;
   display: inline-block;
@@ -51,14 +53,14 @@ body.dark .pokemon-list-card {
   height: 32px;
 }
 
-/* Hide checkbox */
+/* Hide checkbox - UNCHANGED */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* Slider background */
+/* Slider background - UNCHANGED */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -74,14 +76,14 @@ body.dark .pokemon-list-card {
   box-sizing: border-box;
 }
 
-/* Icons inside the slider */
+/* Icons inside the slider - UNCHANGED */
 .slider .icon {
   font-size: 16px;
   z-index: 1;
   color: #f0f0f0;
 }
 
-/* Movable circle */
+/* Movable circle - UNCHANGED */
 .slider:before {
   content: "";
   position: absolute;
@@ -95,7 +97,7 @@ body.dark .pokemon-list-card {
   z-index: 0;
 }
 
-/* When checkbox is checked */
+/* When checkbox is checked - UNCHANGED */
 input:checked + .slider {
   background-color: #FFEA00;
 }
@@ -113,19 +115,12 @@ input:checked + .slider:before {
   --glow: 0 0 10px #f00000, 0 0 20px #f00000, 0 0 40px #f00000;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--light);
-  color: var(--white);
-  margin: 0;
-  padding: 20px;
-}
-
 .container {
   max-width: 100%;
   padding: 0 20px;
 }
 
+/* Heading - UNCHANGED */
 h1 {
   color: var(--white);
   text-shadow: var(--glow);
@@ -149,6 +144,7 @@ h1 {
   border-radius: 10px;
 }
 
+/* Suggestions with highlight */
 .suggestions-list {
   list-style: none;
   padding: 0;
@@ -170,10 +166,14 @@ h1 {
   border-bottom: 1px solid #eee;
 }
 
-.suggestions-list li:hover {
+.suggestions-list li:hover, .suggestions-list li:focus {
   background-color: #f0f0f0;
 }
 
+.highlight {
+  font-weight: bold;
+  color: #f00000;
+}
 
 button {
   padding: 10px 15px;
@@ -206,7 +206,7 @@ button:hover {
   border: 2px solid var(--red);
   background-color: var(--card-dark);
   color: var(--text-dark);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.4s, color 0.4s;
 }
 
 .pokemon-list-card:hover {
@@ -282,6 +282,7 @@ body.light .pokemon-list-card {
   border-radius: 16px;
   padding: 16px;
   box-sizing: border-box;
+  transition: background-color 0.4s, color 0.4s;
 }
 
 .card-front {
@@ -328,6 +329,45 @@ body.light .card-back {
   color: var(--text-light);
 }
 
+/* --- Type chip container for wrapping --- */
+.type-chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* --- Type chip with emoji --- */
+.type-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 12px;
+  color: #222;
+  font-size: 0.9em;
+  margin: 0 2px 2px 0;
+  box-shadow: 0 0 3px #888;
+  background: #eee;
+  font-weight: 600;
+  vertical-align: middle;
+  max-width: 100%;
+  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+body.light .type-chip {
+  color: #222;
+}
+
+body.dark .type-chip {
+  color: #fff;
+}
+
 /* Modal base */
 .modal {
   display: none;
@@ -349,6 +389,7 @@ body.light .card-back {
   max-width: 500px;
   color: var(--text-dark);
   position: relative;
+  transition: background-color 0.4s, color 0.4s;
 }
 
 body.light .modal-content {
@@ -363,4 +404,16 @@ body.light .modal-content {
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 98%;
+    padding: 10px;
+    max-width: 98vw;
+  }
+  .modal-content img {
+    width: 80px;
+    height: 80px;
+  }
 }
